@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Stock Trading Fee Calculator 2026 — Stamp Duty, SFC Levy &amp; Broker Costs | HKFeeCalc</title>
+<meta name="description" content="Calculate Hong Kong stock trading fees instantly. Stamp duty, SFC levy, AFRC levy, HKEX trading fee, CCASS clearing fee, and broker commission — all in one tool. Compare brokers and save on trading costs.">
+<meta name="keywords" content="HK stock trading fee calculator, Hong Kong stamp duty, HKEX trading cost, SFC levy calculator, HK stock broker comparison, HK stock commission calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hkfeecalc.com/">
+<meta property="og:title" content="HK Stock Trading Fee Calculator 2026">
+<meta property="og:description" content="Calculate Hong Kong stock trading fees instantly. Compare brokers and save.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hkfeecalc.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HK Stock Trading Fee Calculator",
+  "url": "https://hkfeecalc.com/",
+  "description": "Calculate Hong Kong stock trading fees including stamp duty, SFC levy, AFRC levy, trading fee, clearing fee and broker commission.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How are HK stock trading fees calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Total fees = Stamp Duty (0.1%, rounded up to HKD 1) + SFC Levy (0.0027%) + AFRC Levy (0.00015%) + HKEX Trading Fee (0.00565%) + CCASS Clearing Fee (0.0042%) + Broker Commission. All regulatory and exchange fees are charged on both the buy and sell sides."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the biggest fee when trading HK stocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stamp duty at 0.1% is usually the largest cost. For a HKD 100,000 trade, stamp duty alone is HKD 100. Broker commission is the second-largest variable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do ETFs have the same fees as regular stocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most ETFs listed on HKEX are exempt from stamp duty. However, SFC levy, AFRC levy, trading fee, and clearing fee still apply."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can non-Hong Kong residents trade HK stocks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most international brokers including Interactive Brokers, Moomoo, Futu, and Tiger Brokers allow non-residents to open accounts and trade Hong Kong stocks."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f7f8fa;
+    --primary: #1a2a6c;
+    --primary-light: #e8ecf4;
+    --accent: #c8a951;
+    --accent-light: #faf5e6;
+    --text: #1a1a2e;
+    --text-secondary: #5a5a6e;
+    --border: #e2e4ea;
+    --red: #c0392b;
+    --green: #1d8348;
+    --green-light: #eafaf1;
+    --blue: #2c5cc5;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    position: sticky; top: 0; background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px); z-index: 100;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { font-weight: 700; font-size: 20px; color: var(--primary); }
+  nav .logo span { color: var(--accent); }
+  nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; margin-left: 24px; }
+  nav a:hover { color: var(--primary); }
+
+  .hero { padding: 60px 0 40px; text-align: center; }
+  .hero h1 { font-size: 36px; font-weight: 700; color: var(--primary); line-height: 1.25; margin-bottom: 12px; }
+  .hero p { font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+  .hero .badge-row { margin-top: 16px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    font-size: 12px; padding: 4px 12px; border-radius: 100px;
+    background: var(--green-light); color: var(--green); font-weight: 500;
+  }
+  .badge.updated { background: var(--accent-light); color: #8a6d14; }
+
+  .calc-section { padding: 0 0 60px; }
+  .calc-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .calc-card h2 { font-size: 22px; color: var(--primary); margin-bottom: 8px; }
+  .calc-card .subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 28px; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+  .form-group input, .form-group select {
+    padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    font-size: 15px; color: var(--text); transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,42,108,0.08);
+  }
+  .form-group .unit { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+  .form-full { grid-column: 1 / -1; }
+
+  .calc-btn {
+    display: block; width: 100%; padding: 14px; background: var(--primary);
+    color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
+    margin-bottom: 24px;
+  }
+  .calc-btn:hover { background: #142254; }
+
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .result-item {
+    padding: 16px; border-radius: var(--radius-sm); text-align: center;
+    background: var(--bg-alt);
+    border: 1px solid transparent;
+  }
+  .result-item.highlight { background: var(--primary-light); border-color: var(--primary); }
+  .result-item .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; font-weight: 500; }
+  .result-item .value { font-size: 22px; font-weight: 700; color: var(--primary); }
+  .result-item .pct { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  .info-section { padding: 60px 0; background: var(--bg-alt); }
+  .info-section h2 { font-size: 26px; color: var(--primary); margin-bottom: 12px; text-align: center; }
+  .info-section .intro { text-align: center; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; }
+  .fee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .fee-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px;
+  }
+  .fee-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+  .fee-card .rate { font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .fee-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  .broker-section { padding: 60px 0; }
+  .broker-section h2 { font-size: 26px; color: var(--primary); margin-bottom: 12px; text-align: center; }
+  .broker-section .intro { text-align: center; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { font-weight: 600; color: var(--text-secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { color: var(--text); }
+  .broker-name { font-weight: 600; color: var(--primary); }
+  .broker-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+  .broker-link {
+    display: inline-block; padding: 6px 16px; font-size: 13px; font-weight: 600;
+    color: #fff; background: var(--primary); border-radius: 100px;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .broker-link:hover { background: #142254; }
+
+  .faq-section { padding: 60px 0; background: var(--bg-alt); }
+  .faq-section h2 { font-size: 26px; color: var(--primary); margin-bottom: 40px; text-align: center; }
+  .faq-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 12px; }
+  .faq-item h3 { font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+  .faq-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+  .cta-section {
+    padding: 60px 0; text-align: center;
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 100%);
+  }
+  .cta-section h2 { font-size: 24px; color: var(--primary); margin-bottom: 12px; }
+  .cta-section p { color: var(--text-secondary); max-width: 560px; margin: 0 auto 24px; }
+  .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn {
+    display: inline-block; padding: 12px 28px; font-size: 15px; font-weight: 600;
+    border-radius: 8px; text-decoration: none; transition: all 0.2s;
+  }
+  .cta-btn.primary { background: var(--primary); color: #fff; }
+  .cta-btn.primary:hover { background: #142254; }
+  .cta-btn.secondary { background: var(--bg); color: var(--primary); border: 1px solid var(--border); }
+  .cta-btn.secondary:hover { border-color: var(--primary); }
+
+  .disclosure-box {
+    margin: 40px auto 0; max-width: 640px; padding: 20px;
+    background: var(--accent-light); border-radius: var(--radius-sm);
+    font-size: 12px; color: #8a6d14; line-height: 1.6; text-align: left;
+  }
+  .disclosure-box strong { display: block; margin-bottom: 4px; }
+
+  footer {
+    padding: 32px 0; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-secondary); text-align: center;
+  }
+  footer a { color: var(--primary); text-decoration: underline; }
+  footer p { margin-bottom: 6px; }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .hero p { font-size: 15px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .calc-card { padding: 20px; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    nav a { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">HK<span>Fee</span>Calc</div>
+    <div>
+      <a href="#calculator">Calculator</a>
+      <a href="#fees">Fees Explained</a>
+      <a href="#brokers">Compare Brokers</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" id="calculator">
+    <div class="container">
+      <h1>HK Stock Trading Fee Calculator 2026</h1>
+      <p>Calculate every fee on your Hong Kong stock trades — stamp duty, SFC levy, clearing fee, and broker commission. Know exactly what you pay before you trade.</p>
+      <div class="badge-row">
+        <span class="badge updated">Last revised: 30 Jun 2025 (HKSCC)</span>
+        <span class="badge">Last verified: June 2026</span>
+        <span class="badge">Free. No sign-up.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="calc-section">
+    <div class="container">
+      <div class="calc-card">
+        <h2>Calculate Your Trading Costs</h2>
+        <p class="subtitle">Enter your trade details below. All fees are calculated per side (buy or sell). Round-trip = per side x 2.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="tradeType">Trade Type</label>
+            <select id="tradeType">
+              <option value="buy">Buy</option>
+              <option value="sell">Sell</option>
+              <option value="both">Buy + Sell (Round Trip)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stockPrice">Stock Price (per share)</label>
+            <input type="number" id="stockPrice" placeholder="e.g. 80.00" min="0.01" step="0.01" value="80.00">
+            <span class="unit">Enter the price of one share</span>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Number of Shares</label>
+            <input type="number" id="quantity" placeholder="e.g. 500" min="1" step="1" value="500">
+            <span class="unit">Check the board lot size for your stock — it varies by listing (e.g. 1, 100, 500, or 1,000 shares per lot)</span>
+          </div>
+          <div class="form-group">
+            <label for="brokerRate">Broker Commission Rate (%)</label>
+            <input type="number" id="brokerRate" placeholder="e.g. 0.03" min="0" max="100" step="0.01" value="0.03">
+            <span class="unit">Typical: 0.03% (online) to 0.25% (traditional)</span>
+          </div>
+          <div class="form-group">
+            <label for="brokerMin">Min Commission (optional)</label>
+            <input type="number" id="brokerMin" placeholder="e.g. 3" min="0" step="0.01" value="3">
+            <span class="unit">Leave 0 if no minimum. App-based: HKD 3-18. Banks: HKD 100+</span>
+          </div>
+          <div class="form-group">
+            <label for="platformFee">Platform Fee (per trade, optional)</label>
+            <input type="number" id="platformFee" placeholder="e.g. 0" min="0" step="0.01" value="0">
+            <span class="unit">Enter per-trade platform fee only. For monthly custody fees, divide by your estimated number of trades per month.</span>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calculateFees()">Calculate Fees</button>
+
+        <div class="results-grid" id="results" style="display:none;"></div>
+
+        <p class="results-cta" id="resultsCta" style="display:none; text-align:center; margin-top:24px; font-size:15px; color:var(--text-secondary);">
+          Paying too much in fees?
+          <a href="#brokers" style="color:var(--primary); font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent);">Compare low-commission HK brokers &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section" id="fees">
+    <div class="container">
+      <h2>Hong Kong Stock Trading Fees Explained</h2>
+      <p class="intro">Every HK stock trade involves six layers of fees. Here is what each one is, who collects it, and how much it costs — sourced directly from HKEX and SFC.</p>
+
+      <div class="fee-grid">
+        <div class="fee-card">
+          <h3>Stamp Duty</h3>
+          <div class="rate">0.1%</div>
+          <p>Collected by the Hong Kong Government. Charged on both buyer and seller. Rounded <strong>up</strong> to the nearest HKD 1. This is usually the largest fee component.</p>
+        </div>
+        <div class="fee-card">
+          <h3>SFC Transaction Levy</h3>
+          <div class="rate">0.0027%</div>
+          <p>Collected for the Securities and Futures Commission. Charged per side, rounded to nearest cent. Applies to most securities.</p>
+        </div>
+        <div class="fee-card">
+          <h3>AFRC Transaction Levy</h3>
+          <div class="rate">0.00015%</div>
+          <p>Collected for the Accounting and Financial Reporting Council. Introduced January 2022. Charged per side, rounded to nearest cent.</p>
+        </div>
+        <div class="fee-card">
+          <h3>HKEX Trading Fee</h3>
+          <div class="rate">0.00565%</div>
+          <p>Payable to Hong Kong Exchanges and Clearing Limited. Charged per side, rounded to nearest cent. Revised from 0.005% effective January 2023.</p>
+        </div>
+        <div class="fee-card">
+          <h3>CCASS Clearing Fee</h3>
+          <div class="rate">0.0042%</div>
+          <p>Settlement fee for Central Clearing and Settlement System. Charged per side. <strong>Since June 2025: no minimum or maximum limits.</strong> Previously had HKD 2-100 range.</p>
+        </div>
+        <div class="fee-card">
+          <h3>Broker Commission</h3>
+          <div class="rate">Negotiable</div>
+          <p>Set by your broker. Online brokers: 0.03%-0.08% (min HKD 3-18). Traditional brokers: 0.15%-0.25% (min HKD 50-100). Always check platform and custody fees on top.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="broker-section" id="brokers">
+    <div class="container">
+      <h2>Compare HK Stock Brokers</h2>
+      <p class="intro">These brokers offer competitive rates for Hong Kong stock trading. Use the calculator above with each broker's rate to see your actual cost. <em>We may earn a commission if you open an account through these links.</em></p>
+      <p style="font-size:12px;color:var(--text-secondary);text-align:center;margin-bottom:24px;max-width:720px;margin-left:auto;margin-right:auto;">
+        Rates shown are indicative as of June 2026. Promotions, fee tiers, and minimums may vary by account type or campaign period. Always verify on the broker's official website before opening an account. Broker names marked with * may offer promotional discounts not reflected here.
+      </p>
+
+      <div class="broker-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Broker</th>
+              <th>Commission</th>
+              <th>Min Fee</th>
+              <th>Platform Fee</th>
+              <th>Markets</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="broker-name">Interactive Brokers</span></td>
+              <td>0.08% <span style="font-size:11px;color:var(--text-secondary);">(Fixed)</span></td>
+              <td>HKD 18</td>
+              <td>None</td>
+              <td>HK, US, Global</td>
+              <td><a href="#" class="broker-link" rel="nofollow sponsored" target="_blank">Open Account &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><span class="broker-name">Moomoo</span></td>
+              <td>0.03%*</td>
+              <td>HKD 3*</td>
+              <td>None</td>
+              <td>HK, US, China A</td>
+              <td><a href="#" class="broker-link" rel="nofollow sponsored" target="_blank">Open Account &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><span class="broker-name">Futu (Futubull)</span></td>
+              <td>0.03%*</td>
+              <td>HKD 3*</td>
+              <td>HKD 15/month*</td>
+              <td>HK, US, China A</td>
+              <td><a href="#" class="broker-link" rel="nofollow sponsored" target="_blank">Open Account &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><span class="broker-name">Tiger Brokers</span></td>
+              <td>0.03%*</td>
+              <td>HKD 2.5*</td>
+              <td>None</td>
+              <td>HK, US, SG, AU</td>
+              <td><a href="#" class="broker-link" rel="nofollow sponsored" target="_blank">Open Account &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><span class="broker-name">HSBC (Traditional)</span></td>
+              <td>0.25%</td>
+              <td>HKD 100</td>
+              <td>Custody: HKD 25-30/month</td>
+              <td>HK, US, Global</td>
+              <td><em style="color:var(--text-secondary);font-size:12px;">For comparison only</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-secondary);margin-top:12px;text-align:center;">
+        <strong>*</strong> Frequently waived or discounted during promotions. Verify current rates on the broker's official website.
+        IB offers both Fixed and Tiered pricing — Tiered may be cheaper for high-volume traders.
+        <a href="#disclosure">Full affiliate disclosure</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How are HK stock trading fees calculated?</h3>
+        <p>Total fees = Stamp Duty (0.1%, rounded up to HKD 1) + SFC Levy (0.0027%) + AFRC Levy (0.00015%) + HKEX Trading Fee (0.00565%) + CCASS Clearing Fee (0.0042%) + Broker Commission (varies). All regulatory and exchange fees — stamp duty, SFC levy, AFRC levy, trading fee, and clearing fee — are charged on both the buy and sell sides. Broker commission is also charged per side.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Why did the clearing fee change in June 2025?</h3>
+        <p>HKSCC restructured the CCASS clearing fee in June 2025. The previous minimum of HKD 2 and maximum of HKD 100 were removed, and the rate was unified at 0.0042% per side. This makes small trades cheaper (no HKD 2 minimum) and large trades slightly more expensive (no HKD 100 cap).</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the biggest fee when trading HK stocks?</h3>
+        <p>Stamp duty at 0.1% is usually the largest cost. For a HKD 100,000 trade, stamp duty alone is HKD 100. Broker commission is the second-largest variable — choosing the right broker can save you 80% or more on trading costs.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do ETFs have the same fees as regular stocks?</h3>
+        <p>Most ETFs listed on HKEX are exempt from stamp duty. However, SFC levy, AFRC levy, trading fee, and clearing fee still apply. Some ETFs also qualify for reduced trading and clearing fees under the Securities Market Maker (SMM) program.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How often do these fee rates change?</h3>
+        <p>Statutory fees (stamp duty, SFC levy) change rarely — stamp duty was last adjusted in November 2023 (reduced to 0.1%). Exchange and clearing fees may adjust more frequently. This calculator is reviewed quarterly to reflect any HKEX or HKSCC fee schedule updates.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can non-Hong Kong residents trade HK stocks?</h3>
+        <p>Yes. Most international brokers including Interactive Brokers, Moomoo, Futu, and Tiger Brokers allow non-residents to open accounts and trade Hong Kong stocks. You will need to provide identity documents and proof of address from your country of residence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Start Trading HK Stocks?</h2>
+      <p>Compare brokers above and choose the one that fits your trading style. Lower commissions mean more of your returns stay in your pocket.</p>
+      <div class="cta-buttons">
+        <a href="#brokers" class="cta-btn primary">Compare Brokers</a>
+        <a href="#calculator" class="cta-btn secondary">Back to Calculator</a>
+      </div>
+
+      <div class="disclosure-box" id="disclosure">
+        <strong>Affiliate Disclosure</strong>
+        HKFeeCalc may earn commissions when you open a brokerage account through links on this site. This does not affect the price you pay and helps us maintain this free calculator. We only list brokers we have researched and believe offer competitive rates.
+
+        <strong>Not Financial Advice</strong>
+        This calculator provides informational estimates only. Trading fees, commission rates, and regulatory charges may vary. Always verify current rates with your broker and the HKEX official fee schedule before trading. This site does not provide investment, tax, or legal advice.
+
+        <strong>Data Accuracy</strong>
+        Fee rates shown are effective as of June 2026. Last revised: 30 June 2025 (HKSCC clearing fee restructure removing min/max limits). We review and update rates regularly. HKEX fee schedules are available at <a href="https://www.hkex.com.hk/Services/Rules-and-Forms-and-Fees" target="_blank" rel="noopener">hkex.com.hk</a>.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HKFeeCalc. All rights reserved.</p>
+    <p><a href="#disclosure">Affiliate Disclosure</a> &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></p>
+    <p style="margin-top:8px;">Data sourced from <a href="https://www.hkex.com.hk" target="_blank" rel="noopener">HKEX</a>, <a href="https://www.sfc.hk" target="_blank" rel="noopener">SFC</a>, and <a href="https://www.hkscc.hk" target="_blank" rel="noopener">HKSCC</a> official fee schedules.</p>
+  </div>
+</footer>
+
+<script>
+function roundUpToDollar(amount) {
+  return Math.ceil(amount);
+}
+
+function roundToCent(amount) {
+  return Math.round(amount * 100) / 100;
+}
+
+function calculateFees() {
+  const tradeType = document.getElementById('tradeType').value;
+  const price = parseFloat(document.getElementById('stockPrice').value) || 0;
+  const qty = parseInt(document.getElementById('quantity').value) || 0;
+  const brokerRate = parseFloat(document.getElementById('brokerRate').value) || 0;
+  const brokerMin = parseFloat(document.getElementById('brokerMin').value) || 0;
+  const platformFee = parseFloat(document.getElementById('platformFee').value) || 0;
+
+  if (price <= 0 || qty <= 0) {
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('resultsCta').style.display = 'none';
+    return;
+  }
+
+  const tradeValue = price * qty;
+  const currencySymbol = 'HK$';
+
+  const stampDuty = roundUpToDollar(tradeValue * 0.0010);
+  const sfcLevy = roundToCent(tradeValue * 0.000027);
+  const afrcLevy = roundToCent(tradeValue * 0.0000015);
+  const tradingFee = roundToCent(tradeValue * 0.0000565);
+  const clearingFee = roundToCent(tradeValue * 0.000042);
+
+  let brokerCom = tradeValue * (brokerRate / 100);
+  if (brokerMin > 0 && brokerCom < brokerMin) brokerCom = brokerMin;
+  brokerCom = roundToCent(brokerCom);
+
+  const totalRegFees = stampDuty + sfcLevy + afrcLevy + tradingFee + clearingFee;
+  const totalPerSide = totalRegFees + brokerCom + platformFee;
+
+  let multiplier = 1;
+  if (tradeType === 'both') multiplier = 2;
+
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.style.display = 'grid';
+  document.getElementById('resultsCta').style.display = 'block';
+
+  const fmt = (v) => currencySymbol + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const items = [
+    { label: 'Trade Value', value: fmt(tradeValue), pct: '', cls: '' },
+    { label: 'Stamp Duty (0.1%)', value: fmt(stampDuty * multiplier), pct: (stampDuty / tradeValue * 100).toFixed(3) + '%', cls: '' },
+    { label: 'SFC Levy (0.0027%)', value: fmt(sfcLevy * multiplier), pct: (sfcLevy / tradeValue * 100).toFixed(5) + '%', cls: '' },
+    { label: 'AFRC Levy (0.00015%)', value: fmt(afrcLevy * multiplier), pct: (afrcLevy / tradeValue * 100).toFixed(6) + '%', cls: '' },
+    { label: 'Trading Fee (0.00565%)', value: fmt(tradingFee * multiplier), pct: (tradingFee / tradeValue * 100).toFixed(5) + '%', cls: '' },
+    { label: 'Clearing Fee (0.0042%)', value: fmt(clearingFee * multiplier), pct: (clearingFee / tradeValue * 100).toFixed(5) + '%', cls: '' },
+    { label: 'Broker Commission', value: fmt(brokerCom * multiplier), pct: (brokerRate).toFixed(2) + '%', cls: '' },
+    { label: 'Total Cost ' + (tradeType === 'both' ? '(Round Trip)' : '(Per Side)'), value: fmt(totalPerSide * multiplier), pct: ((totalPerSide / tradeValue) * 100).toFixed(4) + '% per side' + (tradeType === 'both' ? ' (' + ((totalPerSide * 2 / tradeValue) * 100).toFixed(4) + '% of capital round-trip)' : ''), cls: 'highlight' },
+  ];
+
+  items.push({
+    label: 'Regulatory Fees Only',
+    value: fmt(totalRegFees * multiplier),
+    pct: ((totalRegFees / tradeValue) * 100).toFixed(4) + '%',
+    cls: ''
+  });
+
+  if (tradeType === 'both') {
+    const breakevenPrice = price * (1 + (totalPerSide * 2) / tradeValue);
+    const requiredGain = ((breakevenPrice / price) - 1) * 100;
+    items.push({
+      label: 'Breakeven Price',
+      value: currencySymbol + breakevenPrice.toFixed(3),
+      pct: '',
+      cls: 'highlight'
+    });
+    items.push({
+      label: 'Required Gain to Break Even',
+      value: requiredGain.toFixed(4) + '%',
+      pct: 'Approximate (simplified formula)',
+      cls: 'highlight'
+    });
+  }
+
+  resultsDiv.innerHTML = items.map(item =>
+    '<div class="result-item' + (item.cls ? ' ' + item.cls : '') + '">' +
+    '<div class="label">' + item.label + '</div>' +
+    '<div class="value">' + item.value + '</div>' +
+    (item.pct ? '<div class="pct">' + item.pct + '</div>' : '') +
+    '</div>'
+  ).join('');
+
+  const params = new URLSearchParams({ price, qty, brokerRate, brokerMin, platformFee, tradeType });
+  history.replaceState(null, '', '#' + params.toString());
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash && window.location.hash.length > 1) {
+    try {
+      const params = new URLSearchParams(window.location.hash.substring(1));
+      if (params.has('price')) document.getElementById('stockPrice').value = params.get('price');
+      if (params.has('qty')) document.getElementById('quantity').value = params.get('qty');
+      if (params.has('brokerRate')) document.getElementById('brokerRate').value = params.get('brokerRate');
+      if (params.has('brokerMin')) document.getElementById('brokerMin').value = params.get('brokerMin');
+      if (params.has('platformFee')) document.getElementById('platformFee').value = params.get('platformFee');
+      if (params.has('tradeType')) document.getElementById('tradeType').value = params.get('tradeType');
+    } catch(e) { /* ignore malformed hash */ }
+  }
+  calculateFees();
+});
+
+document.querySelectorAll('#stockPrice, #quantity, #brokerRate, #brokerMin, #platformFee').forEach(el => {
+  el.addEventListener('input', calculateFees);
+});
+document.querySelectorAll('#tradeType').forEach(el => {
+  el.addEventListener('change', calculateFees);
+});
+</script>
+
+</body>
+</html>
