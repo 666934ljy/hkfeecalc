@@ -1,0 +1,7 @@
+name = "hkfeecalc-security"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[[routes]]
+pattern = "hkfeecalc.com/*"
+zone_id = "939249debaad1fc4c5b7877fcb39e4e8"
