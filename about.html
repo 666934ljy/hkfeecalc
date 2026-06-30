@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — HKFeeCalc | Free HK Stock Trading Fee Calculator</title>
+<meta name="description" content="Learn about HKFeeCalc — a free, independent tool for calculating Hong Kong stock trading fees. Our mission, data sources, and methodology.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hkfeecalc.com/about.html">
+<meta property="og:title" content="About HKFeeCalc — Free HK Stock Trading Fee Calculator">
+<meta property="og:description" content="Independent fee calculator for Hong Kong stock trading. Transparent methodology, official data sources, and no hidden costs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hkfeecalc.com/about.html">
+<style>
+  :root {
+    --bg: #ffffff; --bg-alt: #f7f8fa; --primary: #1a2a6c; --primary-light: #e8ecf4;
+    --accent: #c8a951; --accent-light: #faf5e6; --text: #1a1a2e;
+    --text-secondary: #5a5a6e; --border: #e2e4ea; --radius: 12px; --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text); background: var(--bg); line-height: 1.6; font-size: 16px;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  nav {
+    border-bottom: 1px solid var(--border); padding: 16px 0;
+    position: sticky; top: 0; background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px); z-index: 100;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { font-weight: 700; font-size: 20px; color: var(--primary); }
+  nav .logo span { color: var(--accent); }
+  nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; margin-left: 24px; }
+  nav a:hover { color: var(--primary); }
+
+  main { padding: 60px 0; }
+  h1 { font-size: 32px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+  h2 { font-size: 22px; color: var(--primary); margin: 40px 0 12px; }
+  h3 { font-size: 17px; color: var(--primary); margin: 24px 0 8px; }
+  p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.8; }
+  ul { color: var(--text-secondary); margin: 0 0 16px 20px; line-height: 1.8; }
+  .intro { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; }
+  .highlight-box {
+    background: var(--primary-light); border: 1px solid var(--primary);
+    border-radius: var(--radius); padding: 24px; margin: 32px 0;
+  }
+  .highlight-box p { color: var(--primary); margin-bottom: 8px; }
+  a { color: var(--primary); text-decoration: underline; }
+
+  footer {
+    padding: 32px 0; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-secondary); text-align: center;
+  }
+  footer a { color: var(--primary); text-decoration: underline; }
+  footer p { margin-bottom: 6px; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 24px; }
+    nav a { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo" style="text-decoration:none;">HK<span>Fee</span>Calc</a>
+    <div>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <h1>About HKFeeCalc</h1>
+    <p class="intro">A free, independent tool for estimating Hong Kong stock trading costs. No sign-up, no data collection, no hidden fees.</p>
+
+    <h2>Our Mission</h2>
+    <p>HK stock trading involves six layers of fees from multiple regulatory bodies — stamp duty, SFC levy, AFRC levy, HKEX trading fee, CCASS clearing fee, and broker commission. Most investors discover the true cost only after their trade settles.</p>
+    <p>HKFeeCalc was built to solve this: a simple calculator that shows every fee upfront, so you can compare costs across brokers and make informed decisions before placing a trade.</p>
+
+    <div class="highlight-box">
+      <p><strong>This website does not collect personal data, requires no registration, and stores nothing on its servers.</strong> All calculations happen locally in your browser. We do not track, log, or share your trading information.</p>
+    </div>
+
+    <h2>Who Is Behind This</h2>
+    <p>HKFeeCalc is independently operated by a Hong Kong financial content creator focused on regulatory transparency and cross-border investment education. Our work covers HK SFC circulars, offshore account opening guides, and trading cost analysis for mainland Chinese investors trading in Hong Kong markets.</p>
+
+    <h2>Data Sources &amp; Methodology</h2>
+    <h3>Fee Rates</h3>
+    <p>All regulatory fee rates are sourced from official Hong Kong financial regulators and exchanges:</p>
+    <ul>
+      <li><strong>Stamp Duty</strong> — Inland Revenue Department (Stamp Duty Ordinance)</li>
+      <li><strong>SFC Transaction Levy</strong> — Securities and Futures Commission (<a href="https://www.sfc.hk" target="_blank" rel="noopener">sfc.hk</a>)</li>
+      <li><strong>AFRC Transaction Levy</strong> — Accounting and Financial Reporting Council</li>
+      <li><strong>HKEX Trading Fee</strong> — Hong Kong Exchanges and Clearing (<a href="https://www.hkex.com.hk" target="_blank" rel="noopener">hkex.com.hk</a>)</li>
+      <li><strong>CCASS Clearing Fee</strong> — HKSCC / Hong Kong Securities Clearing Company</li>
+    </ul>
+
+    <h3>Fee Calculation Logic</h3>
+    <ul>
+      <li>Stamp duty: 0.1% of trade value, rounded <em>up</em> to nearest HKD 1 (per Inland Revenue rules)</li>
+      <li>SFC levy, AFRC levy, trading fee, and clearing fee: calculated on trade value, rounded to nearest cent</li>
+      <li>Broker commission: calculated per broker's published rate, subject to minimum charge</li>
+      <li>All regulatory fees are charged on <strong>both</strong> buy and sell sides unless otherwise noted</li>
+      <li>ETF stamp duty exemption is automatically factored when noted</li>
+    </ul>
+
+    <h3>Review Schedule</h3>
+    <p>Fee rates are reviewed quarterly against official HKEX, SFC, and HKSCC fee schedules. Broker commission rates are reviewed when major promotional changes are announced. Significant regulatory changes (e.g., the June 2025 HKSCC clearing fee restructuring) are reflected within the week of announcement.</p>
+
+    <h2>How We Operate</h2>
+    <p>HKFeeCalc is supported by affiliate commissions from broker referral links. When you open a brokerage account through our links, we may receive a commission — at no additional cost to you. We only list brokers we have researched and believe offer competitive rates for HK stock trading.</p>
+    <p>Affiliate relationships do not influence our fee calculations, broker rankings, or content. Rates and fees displayed are sourced from official exchanges and broker public disclosures, not from affiliate partners.</p>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>This calculator provides <strong>estimates only</strong>. Actual fees may differ based on your broker's specific terms, account type, and promotional offers.</li>
+      <li>Currency conversion fees, wire transfer charges, and custody fees are not included unless explicitly selected.</li>
+      <li>HKFeeCalc is not a financial advisor, broker, or investment service. We do not provide trading recommendations.</li>
+      <li>Fee rates on this site reflect publicly available schedules as of the "Last verified" date shown on the homepage.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>For corrections, suggestions, or inquiries about this website, email: <a href="mailto:hello@hkfeecalc.com">hello@hkfeecalc.com</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 HKFeeCalc. All rights reserved.</p>
+    <p><a href="index.html">Home</a> &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
